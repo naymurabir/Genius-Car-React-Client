@@ -10,6 +10,9 @@ const Navbar = () => {
         <NavLink to="/" className="text-lg font-semibold mr-3">About</NavLink>
 
         <NavLink to="/" className="text-lg font-semibold mr-3">Services</NavLink>
+
+
+        <NavLink to="/register" className="text-lg font-semibold mr-3">Register</NavLink>
     </>
 
     return (
@@ -24,7 +27,7 @@ const Navbar = () => {
                             {navLinks}
                         </ul>
                     </div>
-                    <Link to="/"> <img className='w-16' src={logo} alt="" /> </Link>
+                    <Link className='hidden md:block' to="/"> <img className='w-16' src={logo} alt="" /> </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
