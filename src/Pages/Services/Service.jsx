@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import frameImg from '../../assets/icons/Frame.png'
+import { Link } from 'react-router-dom';
 
 
 const Service = ({ service }) => {
 
-    const { img, price, title } = service
+    const { _id, img, price, title } = service
 
     return (
         <div>
@@ -15,7 +16,7 @@ const Service = ({ service }) => {
 
                     <div className='flex justify-between items-center'>
                         <p className='text-sm text-[#FF3811] font-bold'>Price: ${price} </p>
-                        <img src={frameImg} alt="" />
+                        <Link to={`/details/${_id}`}> <img src={frameImg} alt="" /> </Link>
                     </div>
                 </div>
             </div>

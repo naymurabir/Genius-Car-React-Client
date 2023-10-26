@@ -9,7 +9,6 @@ const Register = () => {
 
     const { createUser } = useContext(AuthContext)
 
-
     const handleRegister = e => {
         e.preventDefault()
         const form = new FormData(e.currentTarget)
