@@ -5,14 +5,16 @@ import logo from '../../../assets/icons/logo.svg'
 const Navbar = () => {
 
     const navLinks = <>
-        <NavLink to="/" className="text-lg font-semibold mr-3">Home</NavLink>
+        <NavLink to="/" className="text-base font-semibold mr-3">Home</NavLink>
 
-        <NavLink to="/" className="text-lg font-semibold mr-3">About</NavLink>
+        <NavLink to="/" className="text-base font-semibold mr-3">About</NavLink>
 
-        <NavLink to="/" className="text-lg font-semibold mr-3">Services</NavLink>
+        <NavLink to="/" className="text-base font-semibold mr-3">Services</NavLink>
 
 
-        <NavLink to="/register" className="text-lg font-semibold mr-3">Register</NavLink>
+        <NavLink to="/register" className="text-base font-semibold mr-3">Register</NavLink>
+
+        <NavLink to="/addServices" className="text-base font-semibold mr-3">Add Services</NavLink>
     </>
 
     return (
