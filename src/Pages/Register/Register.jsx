@@ -1,13 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import loginImg from '../../assets/images/login/login.svg'
 import { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { updateProfile } from 'firebase/auth';
+import swal from 'sweetalert';
 
 
 const Register = () => {
 
     const { createUser } = useContext(AuthContext)
+
+    const navigate = useNavigate()
 
     const handleRegister = e => {
         e.preventDefault()
@@ -90,7 +94,20 @@ const Register = () => {
                     color: 'white',
                     timer: 2000
                 })
+
+                updateProfile(user, {
+                    displayName: name,
+                    photoURL: photo
+                })
+                    .then(() => {
+                        console.log("Profile updated.");
+                        navigate('/login')
+                    })
+                    .catch(error => {
+                        swal(error.message)
+                    })
                 e.target.reset()
+
             })
             .catch(error => {
                 console.log("Error:", error);

@@ -55,7 +55,6 @@ const SideBar = () => {
 
             <div>
                 <h2 className='text-2xl font-semibold text-black'>Price: $250.00 </h2>
-
                 <button className="bg-[#FF3811] text-white font-semibold md:px-5 md:py-2 rounded mt-2">Proceed Checkout</button>
             </div>
         </div>

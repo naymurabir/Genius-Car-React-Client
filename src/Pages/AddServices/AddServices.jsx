@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 
 const AddServices = () => {
 
@@ -23,6 +24,18 @@ const AddServices = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: "A new service has been added successfully.",
+                        showConfirmButton: false,
+                        background: '#343436',
+                        heightAuto: '100px',
+                        color: 'white',
+                        timer: 2000
+                    })
+                }
             })
     }
 

@@ -16,8 +16,18 @@ const Service = ({ service }) => {
 
                     <div className='flex justify-between items-center'>
                         <p className='text-sm text-[#FF3811] font-bold'>Price: ${price} </p>
-                        <Link to={`/details/${_id}`}> <img src={frameImg} alt="" /> </Link>
+
+                        <Link to={`/details/${_id}`}>
+                            <div className='flex items-center gap-2'>
+                                <h2 className='text-[#FF3811] font-semibold'>Details</h2>
+                                <img src={frameImg} alt="" />
+                            </div>
+                        </Link>
                     </div>
+
+                    <Link to={`/checkout/${_id}`}>
+                        <button className="bg-[#FF3811] text-white font-semibold px-3 py-2 rounded w-full"> Checkout </button>
+                    </Link>
                 </div>
             </div>
         </div>
