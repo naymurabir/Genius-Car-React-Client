@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import { AiOutlineDelete } from 'react-icons/ai';
 
 
-const Booking = ({ booking, handleDeleteCheckout }) => {
+const Booking = ({ booking, handleDeleteCheckout, handleUpdateCheckout }) => {
 
-    const { _id, img, date, email, title, price } = booking
+    const { _id, img, date, email, title, price, status } = booking
 
     return (
         <>
@@ -32,7 +32,11 @@ const Booking = ({ booking, handleDeleteCheckout }) => {
                 </td>
                 <td>{date}</td>
                 <th>
-                    <button className="text-white bg-[#f3411d] px-3 py-1 rounded">Pending</button>
+                    {
+                        status === 'confirm' ? <span className="text-white bg-[#f3411d] px-3 py-1 rounded"> Confirmed </span>
+                            :
+                            <button onClick={() => handleUpdateCheckout(_id)} className="text-white bg-[#f3411d] px-3 py-1 rounded">Please Confirm</button>
+                    }
                 </th>
             </tr>
         </ >
@@ -41,7 +45,8 @@ const Booking = ({ booking, handleDeleteCheckout }) => {
 
 Booking.propTypes = {
     booking: PropTypes.object.isRequired,
-    handleDeleteCheckout: PropTypes.func.isRequired
+    handleDeleteCheckout: PropTypes.func.isRequired,
+    handleUpdateCheckout: PropTypes.func.isRequired
 }
 
 export default Booking;
