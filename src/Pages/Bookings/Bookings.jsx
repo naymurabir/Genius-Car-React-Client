@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import Booking from "../Booking/Booking";
+import swal from "sweetalert";
 
 const Bookings = () => {
 
     const [bookings, setBookings] = useState([])
-    console.log(bookings);
+    // console.log(bookings);
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
@@ -17,13 +18,33 @@ const Bookings = () => {
     }, [user?.email])
 
     const handleDeleteCheckout = (id) => {
-        fetch(`http://localhost:5000/checkout/${id}`, {
-            method: 'DELETE'
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`http://localhost:5000/checkout/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            const remaining = bookings.filter(booking => booking._id !== id)
+                            setBookings(remaining)
+                            if (data.deletedCount > 0)
+                                swal("The booking has been deleted successfully.", {
+                                    icon: "success",
+                                });
+                        })
+
+                } else {
+                    swal("Your file is safe!");
+                }
+            });
     }
 
     return (
