@@ -36,7 +36,11 @@ const Navbar = () => {
 
         {
             user ?
-                <button onClick={handleLogout} className="text-base font-semibold mr-3">Logout</button>
+                <>
+                    <NavLink to="/bookings" className="text-base font-semibold mr-3">My Bookings</NavLink>
+
+                    <button onClick={handleLogout} className="text-base font-semibold mr-3">Logout</button>
+                </>
                 :
                 <NavLink to="/login" className="text-base font-semibold mr-3">Login</NavLink>
 

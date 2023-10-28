@@ -25,6 +25,7 @@ const Checkout = () => {
             email,
             message,
             img: img,
+            title
         }
         console.log(checkout);
 
