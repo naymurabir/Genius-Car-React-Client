@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImg from '../../assets/images/login/login.svg'
 import fbImg from '../../assets/images/login/fb.png'
 import googleImg from '../../assets/images/login/google 1.png'
@@ -9,6 +9,8 @@ import Swal from 'sweetalert2';
 const Login = () => {
 
     const { loginUser, googleLogin } = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const handleLogin = e => {
         e.preventDefault()
@@ -22,6 +24,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user);
+                navigate(location?.state ? location.state : '/')
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -55,6 +58,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 console.log(user);
+                navigate(location?.state ? location.state : '/')
                 Swal.fire({
                     position: 'center',
                     icon: 'success',

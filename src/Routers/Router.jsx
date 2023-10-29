@@ -9,12 +9,14 @@ import AddServices from "../Pages/AddServices/AddServices";
 import Checkout from "../Pages/Checkout/Checkout";
 import Bookings from "../Pages/Bookings/Bookings";
 import PrivateRoute from "../Pages/PrivateRoute/PrivateRoute";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Root></Root>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -39,7 +41,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/checkout/:id',
-                element: <Checkout></Checkout>,
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
             },
             {
