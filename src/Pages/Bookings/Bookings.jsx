@@ -6,7 +6,6 @@ import swal from "sweetalert";
 const Bookings = () => {
 
     const [bookings, setBookings] = useState([])
-    // console.log(bookings);
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
@@ -59,13 +58,11 @@ const Bookings = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.modifiedCount > 0) {
-                    const remaining = bookings.filter(booking => booking._id !== id)
-                    const updatedBooking = bookings.find(booking => booking._id === id)
-                    updatedBooking.status = 'confirm'
-                    const newBooking = [updatedBooking, ...remaining]
-                    setBookings(newBooking)
-                }
+                const remaining = bookings.filter(booking => booking._id !== id)
+                const updatedBooking = bookings.find(booking => booking._id === id)
+                updatedBooking.status = 'confirm'
+                const newBooking = [updatedBooking, ...remaining]
+                setBookings(newBooking)
             })
     }
 
