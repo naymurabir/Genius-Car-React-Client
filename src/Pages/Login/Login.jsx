@@ -5,7 +5,7 @@ import googleImg from '../../assets/images/login/google 1.png'
 import { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
-import axios from 'axios';
+
 
 
 const Login = () => {
@@ -26,13 +26,6 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user
                 console.log(loggedUser);
-                const user = { email }
-                //jwt
-                axios.post('http://localhost:5000/jwt', user)
-                    .then(res => {
-                        console.log(res.data);
-                    })
-
                 navigate(location?.state ? location.state : '/')
                 Swal.fire({
                     position: 'center',
