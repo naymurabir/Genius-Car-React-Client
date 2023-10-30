@@ -5,6 +5,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import axios from "axios";
 
 
+
 const Bookings = () => {
 
     const [bookings, setBookings] = useState([])
@@ -13,12 +14,12 @@ const Bookings = () => {
     useEffect(() => {
         if (user?.email) {
 
-            axios.get(`http://localhost:5000/checkout?email=${user?.email}`, { withCredentials: true })
+            axios.get(`http://localhost:5000/checkout?email=${user.email}`, { withCredentials: true })
                 .then(res => {
                     setBookings(res.data)
                 })
 
-            // fetch(`http://localhost:5000/checkout?email=${user?.email}`)
+            // fetch(`http://localhost:5000/checkout?email=${user.email}`)
             //     .then(res => res.json())
             //     .then(data => setBookings(data))
         }
