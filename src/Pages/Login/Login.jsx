@@ -5,6 +5,7 @@ import googleImg from '../../assets/images/login/google 1.png'
 import { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 
 
@@ -26,7 +27,16 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user
                 console.log(loggedUser);
-                navigate(location?.state ? location.state : '/')
+                const user = { email }
+                //JWT
+                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.success) {
+                            navigate(location?.state ? location.state : '/')
+                        }
+                    })
+
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -91,7 +101,7 @@ const Login = () => {
 
     return (
         <div>
-            <div className="hero h-[450px] my-5 lg:mt-5">
+            <div className="hero min-h-screen my-5 lg:mt-5">
                 <div className="hero-content flex-col md:flex-row lg:flex-row gap-10 lg:gap-20">
                     <div className="text-center lg:text-left lg:w-[50%]">
                         <img className='w-[200px] md:w-[350px]' src={loginImg} alt="" />

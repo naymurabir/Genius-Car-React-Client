@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../Providers/AuthProvider";
 import Booking from "../Booking/Booking";
 import swal from "sweetalert";
+import { AuthContext } from "../Providers/AuthProvider";
+import axios from "axios";
+
 
 const Bookings = () => {
 
@@ -10,11 +12,18 @@ const Bookings = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/checkout?email=${user?.email}`)
-                .then(res => res.json())
-                .then(data => setBookings(data))
+
+            axios.get(`http://localhost:5000/checkout?email=${user?.email}`, { withCredentials: true })
+                .then(res => {
+                    setBookings(res.data)
+                })
+
+            // fetch(`http://localhost:5000/checkout?email=${user?.email}`)
+            //     .then(res => res.json())
+            //     .then(data => setBookings(data))
         }
     }, [user?.email])
+
 
     const handleDeleteCheckout = (id) => {
         swal({
@@ -47,6 +56,7 @@ const Bookings = () => {
 
 
     }
+
     const handleUpdateCheckout = (id) => {
         fetch(`http://localhost:5000/checkout/${id}`, {
             method: 'PATCH',
@@ -65,6 +75,7 @@ const Bookings = () => {
                 setBookings(newBooking)
             })
     }
+
 
     return (
         <div>
