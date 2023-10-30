@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 
+
 const Login = () => {
 
     const { loginUser, googleLogin } = useContext(AuthContext)
@@ -22,8 +23,8 @@ const Login = () => {
         // Pass email and password using loginUser function
         loginUser(email, password)
             .then(result => {
-                const user = result.user
-                console.log(user);
+                const loggedUser = result.user
+                console.log(loggedUser);
                 navigate(location?.state ? location.state : '/')
                 Swal.fire({
                     position: 'center',
