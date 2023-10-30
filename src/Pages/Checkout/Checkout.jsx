@@ -57,7 +57,6 @@ const Checkout = () => {
 
     return (
         <div>
-            <h2>Service title: {title} </h2>
             <form onSubmit={handleCheckout}>
                 <div className="bg-gray-100 lg:w-2/4 mx-auto p-5 my-5 rounded">
 

@@ -2,7 +2,7 @@ import logo from '../../../assets/icons/logo.svg'
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-[#151515] text-white">
+        <footer className="footer p-10 bg-[#151515] text-white mt-10">
             <aside>
                 <img src={logo} alt="" />
                 <p>Genius Car Industry<br />Providing reliable tech since 1992</p>
